@@ -1,0 +1,153 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}About - Khem Bahadur Lodh{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="page-header py-5">
+    <div class="container pt-5">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center pt-4">
+                <h1 class="page-title mt-4">About Me</h1>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- About Section -->
+<section class="about-section py-5">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-5">
+                <div class="about-image-wrapper">
+                    <div class="about-image">
+                        <img src="{% static 'images/khemimg.jpeg' %}" alt="Khem Bahadur Lodh" class="img-fluid rounded">
+                    </div>
+                    <div class="experience-badge">
+                        <span class="years">3+</span>
+                        <span class="text">Years<br>Experience</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-7">
+                <div class="about-content">
+                    <span class="section-subtitle">Who I Am</span>
+                    <h2 class="section-title">Passionate Python Developer from Nepal</h2>
+                    <p class="lead mb-4">
+                        Khem Bahadur Lodh is a passionate Python developer focused on building intelligent applications, 
+                        AI tools, and modern web platforms. With strong expertise in backend development and machine learning, 
+                        he creates innovative digital solutions and developer tools.
+                    </p>
+                    <p class="mb-4">
+                        I specialize in building scalable web applications using Django and Python, while also exploring 
+                        the exciting world of Artificial Intelligence and Machine Learning. My goal is to create 
+                        technology that makes a positive impact on people's lives.
+                    </p>
+                    
+                    <div class="highlight-boxes">
+                        <div class="row g-3">
+                            <div class="col-sm-6">
+                                <div class="highlight-box">
+                                    <i class="fas fa-code text-primary"></i>
+                                    <h5>Python Development</h5>
+                                    <p>Clean, efficient, and scalable code</p>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="highlight-box">
+                                    <i class="fas fa-brain text-success"></i>
+                                    <h5>AI Projects</h5>
+                                    <p>Intelligent solutions with ML</p>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="highlight-box">
+                                    <i class="fas fa-globe text-info"></i>
+                                    <h5>Web Applications</h5>
+                                    <p>Full-stack development</p>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="highlight-box">
+                                    <i class="fas fa-lightbulb text-warning"></i>
+                                    <h5>Problem Solving</h5>
+                                    <p>Creative solutions to complex problems</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4">
+                        <a href="{% url 'contact:contact' %}" class="btn btn-primary me-3">
+                            <i class="fas fa-envelope me-2"></i>Contact Me
+                        </a>
+                        <a href="#" class="btn btn-outline-primary">
+                            <i class="fas fa-download me-2"></i>Download Resume
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Education Section -->
+<section class="education-section py-5 bg-dark-subtle">
+    <div class="container">
+        <div class="section-header text-center mb-5">
+            <span class="section-subtitle">Background</span>
+            <h2 class="section-title">Education & Certifications</h2>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">2020 - 2024</span>
+                            <h4>Bachelor's in Computer Science</h4>
+                            <p class="institution">University Name</p>
+                            <p>Focused on software engineering, algorithms, and artificial intelligence.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-marker"></div>
+                        <div class="timeline-content">
+                            <span class="timeline-date">2018 - 2020</span>
+                            <h4>High School</h4>
+                            <p class="institution">School Name</p>
+                            <p>Science major with focus on Mathematics and Computer Science.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="certifications">
+                    <div class="cert-card">
+                        <i class="fas fa-certificate"></i>
+                        <div class="cert-info">
+                            <h5>Python Programming</h5>
+                            <p>Certified Python Developer</p>
+                        </div>
+                    </div>
+                    <div class="cert-card">
+                        <i class="fas fa-certificate"></i>
+                        <div class="cert-info">
+                            <h5>Machine Learning</h5>
+                            <p>ML Fundamentals</p>
+                        </div>
+                    </div>
+                    <div class="cert-card">
+                        <i class="fas fa-certificate"></i>
+                        <div class="cert-info">
+                            <h5>Web Development</h5>
+                            <p>Full Stack Development</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

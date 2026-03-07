@@ -1,0 +1,279 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="hero-section" id="home">
+    <div class="container">
+        <div class="row align-items-center min-vh-100">
+            <div class="col-lg-7 hero-content">
+                <div class="hero-badge mb-3">
+                    <span class="badge bg-primary bg-opacity-10 text-primary">
+                        <i class="fas fa-code me-2"></i>Available for hire
+                    </span>
+                </div>
+                <h1 class="hero-title display-3 fw-bold mb-4">
+                    Building Intelligent<br>
+                    <span class="text-primary">Applications</span> with<br>
+                    Python & AI
+                </h1>
+                <p class="hero-subtitle lead mb-4">
+                    Hi, I'm <strong>Khem Bahadur Lodh</strong>, a passionate Python Developer from Nepal 
+                    specializing in AI-powered solutions, web applications, and intelligent systems.
+                </p>
+                <div class="hero-buttons">
+                    <a href="{% url 'projects:list' %}" class="btn btn-primary btn-lg me-3">
+                        <i class="fas fa-rocket me-2"></i>View Projects
+                    </a>
+                    <a href="{% url 'contact:contact' %}" class="btn btn-outline-light btn-lg">
+                        <i class="fas fa-envelope me-2"></i>Contact Me
+                    </a>
+                </div>
+                <div class="hero-stats mt-5">
+                    <div class="row g-4">
+                        {% for stat in stats %}
+                        <div class="col-4">
+                            <div class="stat-item">
+                                <h3 class="stat-value">{{ stat.value }}<span class="text-primary">{{ stat.suffix }}</span></h3>
+                                <p class="stat-label">{{ stat.label }}</p>
+                            </div>
+                        </div>
+                        {% empty %}
+                        <div class="col-4">
+                            <div class="stat-item">
+                                <h3 class="stat-value">3<span class="text-primary">+</span></h3>
+                                <p class="stat-label">Years Experience</p>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="stat-item">
+                                <h3 class="stat-value">20<span class="text-primary">+</span></h3>
+                                <p class="stat-label">Projects</p>
+                            </div>
+                        </div>
+                        <div class="col-4">
+                            <div class="stat-item">
+                                <h3 class="stat-value">100<span class="text-primary">%</span></h3>
+                                <p class="stat-label">Commitment</p>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5 hero-image d-none d-lg-block">
+                <div class="hero-graphic">
+                    <div class="code-window">
+                        <div class="code-header">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                            <span class="filename">main.py</span>
+                        </div>
+                        <pre class="code-content"><code><span class="code-keyword">def</span> <span class="code-function">create_solution</span>(<span class="code-param">problem</span>):
+    <span class="code-comment"># Analyze the problem</span>
+    solution = <span class="code-class">AI</span>.analyze(problem)
+    
+    <span class="code-comment"># Build with Python & Django</span>
+    app = <span class="code-class">Django</span>.build(solution)
+    
+    <span class="code-comment"># Deploy and scale</span>
+    <span class="code-keyword">return</span> app.deploy()
+
+<span class="code-comment"># Let's build something amazing!</span>
+result = create_solution(<span class="code-string">"your_idea"</span>)</code></pre>
+                    </div>
+                    <div class="floating-icons">
+                        <i class="fab fa-python"></i>
+                        <i class="fab fa-js"></i>
+                        <i class="fas fa-brain"></i>
+                        <i class="fab fa-docker"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="hero-shape"></div>
+</section>
+
+<!-- Featured Skills Section -->
+<section class="skills-preview-section py-5" id="skills">
+    <div class="container">
+        <div class="section-header text-center mb-5">
+            <span class="section-subtitle">Expertise</span>
+            <h2 class="section-title">Technologies I Work With</h2>
+            <p class="section-description">Leveraging modern tools to build scalable solutions</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="skill-category-card">
+                    <div class="skill-icon">
+                        <i class="fab fa-python"></i>
+                    </div>
+                    <h4>Backend Development</h4>
+                    <p>Python, Django, Django REST Framework, PostgreSQL, Redis</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="skill-category-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-brain"></i>
+                    </div>
+                    <h4>AI & Machine Learning</h4>
+                    <p>Scikit-learn, TensorFlow, NLP, Data Analysis, Predictive Modeling</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="skill-category-card">
+                    <div class="skill-icon">
+                        <i class="fas fa-server"></i>
+                    </div>
+                    <h4>DevOps & Tools</h4>
+                    <p>Git, Docker, Linux, AWS, CI/CD, VS Code</p>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-4">
+            <a href="{% url 'portfolio:skills' %}" class="btn btn-outline-primary">View All Skills</a>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Projects Section -->
+<section class="projects-section py-5" id="projects">
+    <div class="container">
+        <div class="section-header text-center mb-5">
+            <span class="section-subtitle">Portfolio</span>
+            <h2 class="section-title">Featured Projects</h2>
+            <p class="section-description">Some of my recent work</p>
+        </div>
+        <div class="row g-4">
+            <!-- AwasarHub -->
+            <div class="col-md-6 col-lg-4">
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-placeholder bg-gradient-1">
+                            <i class="fas fa-network-wired"></i>
+                        </div>
+                        <div class="project-overlay">
+                            <a href="#" class="btn btn-light btn-sm">View Details</a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h4 class="project-title">AwasarHub</h4>
+                        <p class="project-description">Professional networking platform built with Django and modern web technologies.</p>
+                        <div class="project-tech">
+                            <span class="tech-badge">Django</span>
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">PostgreSQL</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- JarvisAI -->
+            <div class="col-md-6 col-lg-4">
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-placeholder bg-gradient-2">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <div class="project-overlay">
+                            <a href="#" class="btn btn-light btn-sm">View Details</a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h4 class="project-title">JarvisAI</h4>
+                        <p class="project-description">Offline AI assistant powered by Python-based intelligent assistant system.</p>
+                        <div class="project-tech">
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">AI/ML</span>
+                            <span class="tech-badge">NLP</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Phishing Detector -->
+            <div class="col-md-6 col-lg-4">
+                <div class="project-card">
+                    <div class="project-image">
+                        <div class="project-placeholder bg-gradient-3">
+                            <i class="fas fa-shield-alt"></i>
+                        </div>
+                        <div class="project-overlay">
+                            <a href="#" class="btn btn-light btn-sm">View Details</a>
+                        </div>
+                    </div>
+                    <div class="project-content">
+                        <h4 class="project-title">Phishing Detector</h4>
+                        <p class="project-description">Machine learning security project that detects phishing URLs using ML models.</p>
+                        <div class="project-tech">
+                            <span class="tech-badge">Python</span>
+                            <span class="tech-badge">Scikit-learn</span>
+                            <span class="tech-badge">Security</span>
+                        </div>
+                        <div class="project-links">
+                            <a href="#" class="project-link"><i class="fab fa-github"></i></a>
+                            <a href="#" class="project-link"><i class="fas fa-external-link-alt"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center mt-5">
+            <a href="{% url 'projects:list' %}" class="btn btn-primary btn-lg">
+                View All Projects <i class="fas fa-arrow-right ms-2"></i>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- GitHub Section -->
+<section class="github-section py-5">
+    <div class="container">
+        <div class="github-card">
+            <div class="row align-items-center">
+                <div class="col-lg-8">
+                    <h3 class="mb-3"><i class="fab fa-github me-2"></i>GitHub Activity</h3>
+                    <p class="mb-4">Check out my open-source contributions and repositories on GitHub.</p>
+                    <div class="github-stats-inline">
+                        <span class="github-stat">
+                            <i class="fas fa-book"></i> {{ github_stats.total_repos|default:"20" }} Repositories
+                        </span>
+                        <span class="github-stat">
+                            <i class="fas fa-star"></i> {{ github_stats.total_stars|default:"50" }} Stars
+                        </span>
+                        <span class="github-stat">
+                            <i class="fas fa-code-branch"></i> {{ github_stats.total_forks|default:"15" }} Forks
+                        </span>
+                    </div>
+                </div>
+                <div class="col-lg-4 text-lg-end mt-4 mt-lg-0">
+                    <a href="https://github.com/khemprogrammer" target="_blank" class="btn btn-light btn-lg">
+                        <i class="fab fa-github me-2"></i>View Profile
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section py-5">
+    <div class="container text-center">
+        <h2 class="cta-title mb-4">Let's Work Together</h2>
+        <p class="cta-text mb-4">Have a project in mind? Let's discuss how I can help bring your ideas to life.</p>
+        <a href="{% url 'contact:contact' %}" class="btn btn-primary btn-lg">
+            <i class="fas fa-paper-plane me-2"></i>Get In Touch
+        </a>
+    </div>
+</section>
+{% endblock %}

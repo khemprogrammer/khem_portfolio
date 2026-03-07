@@ -1,0 +1,74 @@
+{% extends 'base.html' %}
+
+{% block title %}Message Sent - Khem Bahadur Lodh{% endblock %}
+
+{% block content %}
+<!-- Success Section -->
+<section class="success-section py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 mx-auto text-center">
+                <div class="success-card">
+                    <div class="success-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h1 class="success-title">Message Sent!</h1>
+                    <p class="success-message">
+                        Thank you for reaching out. I've received your message and will get back to you as soon as possible.
+                    </p>
+                    <div class="success-actions">
+                        <a href="{% url 'portfolio:home' %}" class="btn btn-primary btn-lg me-3">
+                            <i class="fas fa-home me-2"></i>Back to Home
+                        </a>
+                        <a href="{% url 'projects:list' %}" class="btn btn-outline-primary btn-lg">
+                            <i class="fas fa-rocket me-2"></i>View Projects
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Next Steps Section -->
+<section class="next-steps-section py-5 bg-dark-subtle">
+    <div class="container">
+        <div class="section-header text-center mb-5">
+            <h2>While You Wait...</h2>
+            <p>Here are some things you might be interested in</p>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="next-step-card text-center">
+                    <div class="icon">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h4>View Projects</h4>
+                    <p>Check out my portfolio of Python and AI projects.</p>
+                    <a href="{% url 'projects:list' %}" class="btn btn-outline-primary">Browse Projects</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="next-step-card text-center">
+                    <div class="icon">
+                        <i class="fab fa-github"></i>
+                    </div>
+                    <h4>GitHub Profile</h4>
+                    <p>Explore my open-source contributions and repositories.</p>
+                    <a href="https://github.com/khemprogrammer" target="_blank" class="btn btn-outline-primary">Visit GitHub</a>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="next-step-card text-center">
+                    <div class="icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <h4>About Me</h4>
+                    <p>Learn more about my skills and experience.</p>
+                    <a href="{% url 'portfolio:about' %}" class="btn btn-outline-primary">Read More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

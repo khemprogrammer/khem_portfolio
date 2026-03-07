@@ -1,0 +1,163 @@
+{% extends 'base.html' %}
+
+{% block title %}Contact - Khem Bahadur Lodh{% endblock %}
+
+{% block content %}
+<!-- Page Header -->
+<section class="page-header py-5">
+    <div class="container pt-5">
+        <div class="row">
+            <div class="col-lg-8 mx-auto text-center pt-4">
+                <h1 class="page-title mt-4">Get In Touch</h1>
+                <p class="lead">Have a project in mind? Let's discuss how I can help.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section class="contact-section py-5">
+    <div class="container">
+        <div class="row g-5">
+            <!-- Contact Info -->
+            <div class="col-lg-4">
+                <div class="contact-info-wrapper">
+                    <h3 class="mb-4">Contact Information</h3>
+                    
+                    <div class="contact-info-item">
+                        <div class="icon">
+                            <i class="fas fa-envelope"></i>
+                        </div>
+                        <div class="content">
+                            <h5>Email</h5>
+                            <p><a href="mailto:{{ profile.email|default:'contact@khemlodh.com.np' }}">{{ profile.email|default:'contact@khemlodh.com.np' }}</a></p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info-item">
+                        <div class="icon">
+                            <i class="fas fa-map-marker-alt"></i>
+                        </div>
+                        <div class="content">
+                            <h5>Location</h5>
+                            <p>{{ profile.location|default:'Nepal' }}</p>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-info-item">
+                        <div class="icon">
+                            <i class="fas fa-clock"></i>
+                        </div>
+                        <div class="content">
+                            <h5>Working Hours</h5>
+                            <p>Mon - Fri: 9:00 AM - 6:00 PM<br>NPT (UTC+5:45)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="social-connect mt-4">
+                        <h5>Connect With Me</h5>
+                        <div class="social-links">
+                            <a href="https://github.com/khemprogrammer" target="_blank" class="social-link" title="GitHub">
+                                <i class="fab fa-github"></i>
+                            </a>
+                            <a href="#" target="_blank" class="social-link" title="LinkedIn">
+                                <i class="fab fa-linkedin-in"></i>
+                            </a>
+                            <a href="#" target="_blank" class="social-link" title="Twitter">
+                                <i class="fab fa-twitter"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Contact Form -->
+            <div class="col-lg-8">
+                <div class="contact-form-wrapper">
+                    <h3 class="mb-4">Send a Message</h3>
+                    
+                    {% if messages %}
+                    {% for message in messages %}
+                    <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                    
+                    <form method="post" class="contact-form" novalidate>
+                        {% csrf_token %}
+                        
+                        <!-- Honeypot field -->
+                        <div style="display: none;">
+                            {{ form.website }}
+                        </div>
+                        
+                        <div class="row g-3">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="{{ form.name.id_for_label }}" class="form-label">Your Name *</label>
+                                    {{ form.name }}
+                                    {% if form.name.errors %}
+                                    <div class="invalid-feedback d-block">
+                                        {{ form.name.errors.0 }}
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="{{ form.email.id_for_label }}" class="form-label">Email Address *</label>
+                                    {{ form.email }}
+                                    {% if form.email.errors %}
+                                    <div class="invalid-feedback d-block">
+                                        {{ form.email.errors.0 }}
+                                    </div>
+                                    {% endif %}
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group mt-3">
+                            <label for="{{ form.subject.id_for_label }}" class="form-label">Subject</label>
+                            {{ form.subject }}
+                        </div>
+                        
+                        <div class="form-group mt-3">
+                            <label for="{{ form.message.id_for_label }}" class="form-label">Message *</label>
+                            {{ form.message }}
+                            {% if form.message.errors %}
+                            <div class="invalid-feedback d-block">
+                                {{ form.message.errors.0 }}
+                            </div>
+                            {% endif %}
+                        </div>
+                        
+                        <div class="form-group mt-4">
+                            <button type="submit" class="btn btn-primary btn-lg">
+                                <i class="fas fa-paper-plane me-2"></i>Send Message
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="cta-section py-5 bg-primary">
+    <div class="container text-center">
+        <h2 class="mb-4">Ready to Start Your Project?</h2>
+        <p class="lead mb-4">Let's collaborate and build something amazing together.</p>
+        <div class="cta-buttons">
+            <a href="{% url 'projects:list' %}" class="btn btn-light btn-lg me-3">
+                <i class="fas fa-rocket me-2"></i>View My Work
+            </a>
+            <a href="https://github.com/khemprogrammer" target="_blank" class="btn btn-outline-light btn-lg">
+                <i class="fab fa-github me-2"></i>GitHub Profile
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock %}
