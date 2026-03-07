@@ -1,0 +1,384 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messages - Khem Portfolio Admin</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6366f1;
+            --primary-dark: #4f46e5;
+            --dark: #0f172a;
+            --darker: #020617;
+            --card: #1e293b;
+            --card-hover: #263348;
+            --text: #f8fafc;
+            --text-muted: #94a3b8;
+            --border: #334155;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --danger: #ef4444;
+            --info: #3b82f6;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--dark);
+            color: var(--text);
+            min-height: 100vh;
+        }
+        
+        .sidebar {
+            position: fixed;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 260px;
+            background: var(--card);
+            border-right: 1px solid var(--border);
+            padding: 20px;
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .sidebar-brand {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px;
+            margin-bottom: 30px;
+        }
+        
+        .brand-icon {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--primary) 0%, #8b5cf6 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            color: white;
+        }
+        
+        .brand-text { font-size: 1.25rem; font-weight: 700; color: var(--text); }
+        .brand-subtitle { font-size: 0.75rem; color: var(--text-muted); }
+        
+        .nav-menu { list-style: none; padding: 0; flex: 1; }
+        .nav-item { margin-bottom: 8px; }
+        
+        .nav-link {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 16px;
+            color: var(--text-muted);
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: all 0.3s;
+        }
+        
+        .nav-link:hover { background: rgba(99,102,241,0.1); color: var(--text); }
+        
+        .nav-link.active {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            color: white;
+        }
+        
+        .nav-badge {
+            margin-left: auto;
+            background: var(--danger);
+            color: white;
+            padding: 2px 8px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+        }
+        
+        .main-content { margin-left: 260px; padding: 30px; min-height: 100vh; }
+        
+        .page-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        
+        .page-title { font-size: 1.75rem; font-weight: 700; }
+        .page-subtitle { color: var(--text-muted); font-size: 0.875rem; }
+        
+        .filters-bar {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 20px;
+            margin-bottom: 24px;
+        }
+        
+        .search-input {
+            background: var(--darker);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 12px 16px;
+            border-radius: 10px;
+            width: 100%;
+        }
+        
+        .search-input:focus { outline: none; border-color: var(--primary); }
+        
+        .form-select {
+            background: var(--darker);
+            border: 1px solid var(--border);
+            color: var(--text);
+            padding: 12px 16px;
+            border-radius: 10px;
+        }
+        
+        .form-select:focus { outline: none; border-color: var(--primary); box-shadow: none; }
+        
+        .messages-list {
+            background: var(--card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            overflow: hidden;
+        }
+        
+        .message-item {
+            padding: 20px 24px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .message-item:last-child { border-bottom: none; }
+        .message-item:hover { background: var(--card-hover); }
+        .message-item.unread { background: rgba(99,102,241,0.05); border-left: 3px solid var(--primary); }
+        
+        .message-avatar {
+            width: 45px;
+            height: 45px;
+            background: linear-gradient(135deg, var(--primary) 0%, #8b5cf6 100%);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            color: white;
+            flex-shrink: 0;
+        }
+        
+        .message-content { flex: 1; min-width: 0; }
+        
+        .message-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 4px;
+        }
+        
+        .message-name { font-weight: 600; }
+        .message-time { color: var(--text-muted); font-size: 0.8rem; }
+        
+        .message-subject {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 4px;
+        }
+        
+        .message-preview {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        
+        .badge { padding: 4px 10px; border-radius: 6px; font-size: 0.7rem; font-weight: 600; }
+        .badge-new { background: rgba(239,68,68,0.15); color: var(--danger); }
+        .badge-read { background: rgba(59,130,246,0.15); color: var(--info); }
+        .badge-replied { background: rgba(16,185,129,0.15); color: var(--success); }
+        .badge-archived { background: rgba(148,163,184,0.15); color: var(--text-muted); }
+        
+        .empty-state { text-align: center; padding: 60px 20px; }
+        
+        .empty-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(99,102,241,0.1);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 20px;
+            font-size: 32px;
+            color: var(--primary);
+        }
+        
+        .pagination-wrapper { padding: 20px; display: flex; justify-content: center; }
+        
+        .page-link {
+            background: var(--card);
+            border: 1px solid var(--border);
+            color: var(--text-muted);
+            padding: 8px 14px;
+            margin: 0 2px;
+            border-radius: 8px;
+        }
+        
+        .page-link:hover { background: var(--card-hover); border-color: var(--primary); color: var(--text); }
+        .page-item.active .page-link { background: var(--primary); border-color: var(--primary); }
+        
+        @media (max-width: 768px) {
+            .sidebar { width: 70px; padding: 15px 10px; }
+            .brand-text, .brand-subtitle { display: none; }
+            .nav-link span { display: none; }
+            .nav-link { justify-content: center; padding: 12px; }
+            .main-content { margin-left: 70px; padding: 20px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sidebar -->
+    <nav class="sidebar">
+        <div class="sidebar-brand">
+            <div class="brand-icon"><i class="fas fa-code"></i></div>
+            <div>
+                <div class="brand-text">Khem</div>
+                <div class="brand-subtitle">Admin Panel</div>
+            </div>
+        </div>
+        
+        <ul class="nav-menu">
+            <li class="nav-item">
+                <a href="{% url 'dashboard:index' %}" class="nav-link">
+                    <i class="fas fa-gauge-high"></i><span>Dashboard</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{% url 'dashboard:projects' %}" class="nav-link">
+                    <i class="fas fa-folder"></i><span>Projects</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{% url 'dashboard:messages' %}" class="nav-link active">
+                    <i class="fas fa-envelope"></i><span>Messages</span>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a href="{% url 'portfolio:home' %}" class="nav-link" target="_blank">
+                    <i class="fas fa-globe"></i><span>View Site</span>
+                </a>
+            </li>
+        </ul>
+        
+        <a href="{% url 'dashboard:logout' %}" class="btn btn-secondary" style="color: var(--text-muted); text-decoration: none; border: none;">
+            <i class="fas fa-sign-out-alt"></i><span>Logout</span>
+        </a>
+    </nav>
+    
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="page-header">
+            <div>
+                <h1 class="page-title">Messages</h1>
+                <p class="page-subtitle">Manage contact form submissions</p>
+            </div>
+        </div>
+        
+        <!-- Filters -->
+        <div class="filters-bar">
+            <form method="GET" class="row g-3">
+                <div class="col-md-6">
+                    <input type="text" name="search" class="search-input" placeholder="Search messages..." value="{{ search_query }}">
+                </div>
+                <div class="col-md-4">
+                    <select name="status" class="form-select">
+                        <option value="">All Status</option>
+                        <option value="new" {% if status_filter == 'new' %}selected{% endif %}>New</option>
+                        <option value="read" {% if status_filter == 'read' %}selected{% endif %}>Read</option>
+                        <option value="replied" {% if status_filter == 'replied' %}selected{% endif %}>Replied</option>
+                        <option value="archived" {% if status_filter == 'archived' %}selected{% endif %}>Archived</option>
+                    </select>
+                </div>
+                <div class="col-md-2">
+                    <button type="submit" class="btn btn-secondary w-100">
+                        <i class="fas fa-search"></i> Filter
+                    </button>
+                </div>
+            </form>
+        </div>
+        
+        <!-- Messages List -->
+        <div class="messages-list">
+            {% for message in messages %}
+            <a href="{% url 'dashboard:message_detail' message.id %}" class="message-item {% if message.status == 'new' %}unread{% endif %}">
+                <div class="message-avatar">
+                    {{ message.name|make_list|first|upper }}
+                </div>
+                <div class="message-content">
+                    <div class="message-header">
+                        <span class="message-name">{{ message.name }}</span>
+                        <span class="message-time">{{ message.created_at|timesince }} ago</span>
+                    </div>
+                    <div class="message-subject">{{ message.subject|default:"No subject" }}</div>
+                    <div class="message-preview">{{ message.message|truncatechars:60 }}</div>
+                </div>
+                <span class="badge badge-{{ message.status }}">{{ message.get_status_display }}</span>
+            </a>
+            {% empty %}
+            <div class="empty-state">
+                <div class="empty-icon"><i class="fas fa-inbox"></i></div>
+                <h4>No messages found</h4>
+                <p style="color: var(--text-muted);">Contact form submissions will appear here</p>
+            </div>
+            {% endfor %}
+        </div>
+        
+        <!-- Pagination -->
+        {% if messages.paginator.num_pages > 1 %}
+        <div class="pagination-wrapper">
+            <nav>
+                <ul class="pagination">
+                    {% if messages.has_previous %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ messages.previous_page_number }}{% if search_query %}&search={{ search_query }}{% endif %}{% if status_filter %}&status={{ status_filter }}{% endif %}">
+                            <i class="fas fa-chevron-left"></i>
+                        </a>
+                    </li>
+                    {% endif %}
+                    
+                    {% for num in messages.paginator.page_range %}
+                    <li class="page-item {% if num == messages.number %}active{% endif %}">
+                        <a class="page-link" href="?page={{ num }}{% if search_query %}&search={{ search_query }}{% endif %}{% if status_filter %}&status={{ status_filter }}{% endif %}">{{ num }}</a>
+                    </li>
+                    {% endfor %}
+                    
+                    {% if messages.has_next %}
+                    <li class="page-item">
+                        <a class="page-link" href="?page={{ messages.next_page_number }}{% if search_query %}&search={{ search_query }}{% endif %}{% if status_filter %}&status={{ status_filter }}{% endif %}">
+                            <i class="fas fa-chevron-right"></i>
+                        </a>
+                    </li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+        {% endif %}
+    </main>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

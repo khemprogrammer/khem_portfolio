@@ -92,6 +92,7 @@ class Project(models.Model):
     # Status
     status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='completed')
     is_featured = models.BooleanField(default=False, help_text="Show on homepage")
+    is_pinned = models.BooleanField(default=False, help_text="Pin to top of project list")
     is_public = models.BooleanField(default=True)
     
     # Meta

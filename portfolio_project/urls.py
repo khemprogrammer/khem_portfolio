@@ -11,6 +11,7 @@ urlpatterns = [
     path('', include('portfolio.urls')),
     path('projects/', include('projects.urls')),
     path('contact/', include('contact.urls')),
+    path('dashboard/', include('dashboard.urls', namespace='dashboard')),
 ]
 
 if settings.DEBUG:
