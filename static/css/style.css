@@ -161,4 +161,11 @@ body {
     .hero-buttons { justify-content: center; }
     .stat-item { text-align: center; }
     .section-title { font-size: 1.75rem; }
+    .hero-image { display: block !important; margin-top: 2rem; }
+    .hero-graphic { transform: scale(0.8); transform-origin: top center; }
+    .code-window { margin: 0 -10px; }
+}
+
+@media (max-width: 480px) {
+    .hero-graphic { transform: scale(0.65); }
 }
