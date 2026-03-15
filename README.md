@@ -30,7 +30,7 @@ A modern, professional, and fully responsive portfolio website built with Django
 ### Backend
 - Python 3.10+
 - Django 5.0
-- SQLite (default) / PostgreSQL (production)
+- PostgreSQL
 - Django ORM
 - Requests (GitHub API)
 
@@ -208,6 +208,11 @@ Access `/admin/` to manage:
 | `SECRET_KEY` | Django secret key | Required |
 | `DEBUG` | Debug mode | True |
 | `ALLOWED_HOSTS` | Allowed hosts | localhost |
+| `DB_NAME` | PostgreSQL database name | portfolio_db |
+| `DB_USER` | PostgreSQL user | postgres |
+| `DB_PASSWORD` | PostgreSQL password | Required |
+| `DB_HOST` | Database host | localhost |
+| `DB_PORT` | Database port | 5432 |
 | `GITHUB_USERNAME` | GitHub username | khemprogrammer |
 | `GITHUB_TOKEN` | GitHub API token | None |
 | `EMAIL_HOST` | SMTP host | localhost |
