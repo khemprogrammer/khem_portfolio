@@ -97,12 +97,12 @@ class Profile(models.Model):
     name = models.CharField(max_length=200, default="Khem Bahadur Lodh")
     title = models.CharField(max_length=300, default="Python Developer | Full-Stack Developer | AI Enthusiast")
     location = models.CharField(max_length=200, default="Nepal")
-    email = models.EmailField(default="contact@khemlodh.com.np")
+    email = models.EmailField(default="khem.poo557@gmail.com")
     phone = models.CharField(max_length=20, blank=True)
     
     # Social links
     github_url = models.URLField(default="https://github.com/khemprogrammer")
-    linkedin_url = models.URLField(blank=True)
+    linkedin_url = models.URLField(default="https://linkedin.com/in/khem-bahadur-lodh-980548228")
     twitter_url = models.URLField(blank=True)
     website_url = models.URLField(blank=True)
     

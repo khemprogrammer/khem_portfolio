@@ -1,14 +1,14 @@
 /* Khem Bahadur Lodh - Portfolio Styles */
 
 :root {
-    --primary: #6366f1;
-    --primary-hover: #4f46e5;
-    --dark: #0f172a;
-    --darker: #020617;
-    --card: #1e293b;
-    --text: #f8fafc;
-    --text-muted: #94a3b8;
-    --border: #334155;
+    --primary: #005f02;
+    --primary-hover: #427a43;
+    --dark: #0a1f0a;
+    --darker: #050f05;
+    --card: #132413;
+    --text: #f2e3bb;
+    --text-muted: #a8a08a;
+    --border: #2d4a2d;
 }
 
 * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -21,10 +21,10 @@ body {
 }
 
 /* Navbar */
-.navbar { background: rgba(15,23,42,0.95) !important; backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
+.navbar { background: rgba(10,31,10,0.95) !important; backdrop-filter: blur(10px); border-bottom: 1px solid var(--border); }
 .brand-text { font-size: 1.5rem; font-weight: 800; color: var(--text); }
 .navbar-nav .nav-link { color: var(--text-muted) !important; font-weight: 500; padding: 0.5rem 1rem !important; }
-.navbar-nav .nav-link:hover, .navbar-nav .nav-link.active { color: var(--text) !important; }
+.navbar-nav .nav-link:hover, .navbar-nav .nav-link.active { color: var(--primary) !important; }
 
 /* Hero */
 .hero-section { min-height: 100vh; padding-top: 100px; position: relative; }
@@ -55,7 +55,7 @@ body {
 .about-image-wrapper { position: relative; }
 .about-image { border-radius: 20px; overflow: hidden; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); }
 .about-image img { width: 100%; height: auto; display: block; }
-.profile-placeholder { height: 400px; background: linear-gradient(135deg, var(--primary) 0%, #8b5cf6 100%); display: flex; align-items: center; justify-content: center; font-size: 8rem; color: white; }
+.profile-placeholder { height: 400px; background: linear-gradient(135deg, var(--primary) 0%, var(--primary-hover) 100%); display: flex; align-items: center; justify-content: center; font-size: 8rem; color: white; }
 
 /* Sections */
 .section-title { font-size: 2.5rem; font-weight: 700; margin-bottom: 1rem; }
@@ -79,12 +79,12 @@ body {
 /* Projects */
 .project-card .project-image { position: relative; overflow: hidden; border-radius: 8px; margin-bottom: 1rem; }
 .project-placeholder { height: 200px; display: flex; align-items: center; justify-content: center; font-size: 3rem; color: white; }
-.bg-gradient-1 { background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%); }
-.bg-gradient-2 { background: linear-gradient(135deg, #ec4899 0%, #f43f5e 100%); }
-.bg-gradient-3 { background: linear-gradient(135deg, #10b981 0%, #06b6d4 100%); }
+.bg-gradient-1 { background: linear-gradient(135deg, #005f02 0%, #427a43 100%); }
+.bg-gradient-2 { background: linear-gradient(135deg, #427a43 0%, #c0b87a 100%); }
+.bg-gradient-3 { background: linear-gradient(135deg, #c0b87a 0%, #f2e3bb 100%); }
 .project-overlay { position: absolute; inset: 0; background: rgba(0,0,0,0.7); display: flex; align-items: center; justify-content: center; opacity: 0; transition: opacity 0.3s; }
 .project-image:hover .project-overlay { opacity: 1; }
-.tech-badge { background: rgba(99,102,241,0.2); color: var(--primary); padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; margin-right: 5px; }
+.tech-badge { background: rgba(0,95,2,0.2); color: var(--primary); padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; margin-right: 5px; }
 
 /* Skills */
 .skill-icon { font-size: 2.5rem; color: var(--primary); margin-bottom: 1rem; }
@@ -135,7 +135,7 @@ body {
 .timeline-content { background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1.5rem; }
 .timeline-date { color: var(--primary); font-size: 0.875rem; font-weight: 500; }
 .experience-tags { margin-top: 1rem; }
-.experience-tags .tag { background: rgba(99,102,241,0.2); color: var(--primary); padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; margin-right: 5px; }
+.experience-tags .tag { background: rgba(0,95,2,0.2); color: var(--primary); padding: 4px 12px; border-radius: 20px; font-size: 0.75rem; margin-right: 5px; }
 
 /* GitHub Section */
 .github-card { background: var(--card); border: 1px solid var(--border); border-radius: 16px; padding: 2rem; }
@@ -145,8 +145,6 @@ body {
 
 /* CTA */
 .cta-section { background: linear-gradient(135deg, var(--primary) 0%, var(--primary-hover) 100%); }
-.cta-section .section-title { color: white; }
-.cta-section .section-description, .cta-section p { color: rgba(255,255,255,0.8); }
 
 /* Responsive */
 @media (max-width: 991px) {
