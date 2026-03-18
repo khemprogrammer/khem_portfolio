@@ -79,7 +79,7 @@ WSGI_APPLICATION = 'portfolio_project.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        default=os.environ.get('DATABASE_URL', 'sqlite:///db.sqlite3'),
+        default=os.environ.get('DATABASE_URL', 'postgresql://postgres:root@localhost:5432/portfolio_db'),
         conn_max_age=600
     )
 }
