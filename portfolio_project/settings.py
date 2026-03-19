@@ -23,6 +23,10 @@ DEBUG = os.environ.get('DEBUG', 'True').lower() == 'true'
 
 ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', 'khem-portfolio.onrender.com,khembahadurlodh.com.np,www.khembahadurlodh.com.np,127.0.0.1').split(',')
 
+# Always include www variant no matter what
+if 'khembahadurlodh.com.np' in ALLOWED_HOSTS and 'www.khembahadurlodh.com.np' not in ALLOWED_HOSTS:
+    ALLOWED_HOSTS.append('www.khembahadurlodh.com.np')
+
 
 # Application definition
 
